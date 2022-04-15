@@ -67,9 +67,9 @@
       <div class="image"><img src="media/art/featherless.png"></div>
       <div class="image"><img src="media/art/headperson.png"></div>
       <div class="image"><img src="media/art/killdeadsketch.png"></div>
-      <div class="image"><img src="media/art/kinkatpride_xxx.png"></div>
+      <div class="image" rel="xxx"><img src="media/art/kinkatpride_xxx.png"></div>
       <div class="image"><img src="media/art/london.png"></div>
-      <div class="image"><img src="media/art/lovingit_xxx.png"></div>
+      <div class="image" rel="xxx"><img src="media/art/lovingit_xxx.png"></div>
       <div class="image"><img src="media/art/moddedminecarft.png"></div>
       <div class="image"><img src="media/art/monenokeone.png"></div>
       <div class="image"><img src="media/art/ootw.png"></div>
@@ -81,7 +81,7 @@
       <div class="image"><img src="media/art/questions.png"></div>
       <div class="image"><img src="media/art/sad.png"></div>
       <div class="image"><img src="media/art/sketch.png"></div>
-      <div class="image"><img src="media/art/spiltmilk_xxx.png"></div>
+      <div class="image" rel="xxx"><img src="media/art/spiltmilk_xxx.png"></div>
       <div class="image"><img src="media/art/streets.png"></div>
       <div class="image"><img src="media/art/youneedtogo.png"></div>
       <div class="image"><img src="media/art/genderabolition.jpg"></div>
@@ -116,7 +116,7 @@
       <div class="image"><img src="media/art/*.SVG"></div>
 <!--videos-->
       <div class="gif"><video autoplay loop muted playsinline ><source src="media/compressed/allmediaisporn.mp4" type="video/mp4" ><source src="media/compressed/allmediaisporn.webm" type="video/webm" ></video></div>
-      <div class="gif"><video autoplay loop muted playsinline ><source src="media/compressed/cashstrated_xxx.mp4" type="video/mp4" ><source src="media/compressed/cashstrated_xxx.webm" type="video/webm" ></video></div>
+      <div class="gif" rel="xxx"><video autoplay loop muted playsinline ><source src="media/compressed/cashstrated_xxx.mp4" type="video/mp4" ><source src="media/compressed/cashstrated_xxx.webm" type="video/webm" ></video></div>
       <div class="gif"><video autoplay loop muted playsinline ><source src="media/compressed/cat.mp4" type="video/mp4" ><source src="media/compressed/cat.webm" type="video/webm" ></video></div>
       <div class="gif"><video autoplay loop muted playsinline ><source src="media/compressed/chair.mp4" type="video/mp4" ><source src="media/compressed/chair.webm" type="video/webm" ></video></div>
       <div class="gif"><video autoplay loop muted playsinline ><source src="media/compressed/citygirls.mp4" type="video/mp4" ><source src="media/compressed/citygirls.webm" type="video/webm" ></video></div>
