@@ -1,37 +1,30 @@
-/* 
+function shuffle(elems) {
+ 
+  allElems = (function(){
+var ret = [], l = elems.length;
+while (l--) { ret[ret.length] = elems[l]; }
+return ret;
+  })();
 
-var artlist = []; //the array we will store the files
-var memelist = []; //the array we will store the files
-
-//loads a files file into the array "files"
-function get_filelists(file_source_list){
-  for(let i = 0; i < file_source_list.length; i++){
-    var file_raw = new XMLHttpRequest();
-
-    var file_source = ("/media/" + file_source_list[i] + ".txt")
-    
-    file_raw.open("GET", file_source, false); //start loading the file
-    file_raw.onreadystatechange = function (){
-      if(file_raw.readyState === 4){
-        if(file_raw.status === 200 || file_raw.status == 0){ //done loading
-            var file_txt = file_raw.responseText;
-            artlist = file_txt.split('\n'); //split the lines of that string into an array
-            //alert("Returning "+ file_source + "  status: " + file_raw.readyState + " | " + window[file_source_list[i]]); //debug the loading proccess
-        }
+  var shuffled = (function(){
+      var l = allElems.length, ret = [];
+      while (l--) {
+          var random = Math.floor(Math.random() * allElems.length),
+              randEl = allElems[random].cloneNode(true);
+          allElems.splice(random, 1);
+          ret[ret.length] = randEl;
       }
-    }
-    file_raw.send(null);
+      return ret; 
+  })(), l = elems.length;
+
+  while (l--) {
+      elems[l].parentNode.insertBefore(shuffled[l], elems[l].nextSibling);
+      elems[l].parentNode.removeChild(elems[l]);
   }
+
 }
 
-get_filelists(["artlist","memelist"])
-alert(artlist)
+shuffle( document.querySelectorAll('#sectionone > div') )
 
-var sectionone = document.querySelector('#sectionone'); 
-
-for(let i = 0; i < artlist.length; i++){
-  let element = document.createElement("article");
-  element.innerHTML = "<img src=\"/media/" + artlist[i] + "\">"
-}
-
-*/
+var button = document.querySelector('button');
+button.addEventListener('click', function() { shuffle( document.querySelectorAll('#sectionone > div') ) }, false);

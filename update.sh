@@ -23,14 +23,26 @@ echo "  " >> content.html
 echo "<!--images-->" >> content.html
 
 for file in media/art/*.png media/art/*.jpg media/art/*.svg media/art/*.PNG media/art/*.JPG media/art/*.SVG; do
-    echo "      <div class=\"image\"><img src=\"media/art/$(basename "$file")\"></div>" >> content.html
+  if true; then
+    if [[ "$file" == *"xxx"* ]]; then
+      echo "      <div class=\"image\" rel=\"xxx\"><img src=\"media/art/$(basename "$file")\"></div>" >> content.html
+    else
+      echo "      <div class=\"image\"><img src=\"media/art/$(basename "$file")\"></div>" >> content.html
+    fi
+  fi
+
 done
 
 echo "<!--videos-->" >> content.html
 
 for file in media/compressed/*.webm; do
-    echo "      <div class=\"gif\"><video autoplay loop muted playsinline ><source src=\"media/compressed/$(basename  "${file%.*}").mp4\" type=\"video/mp4\" ><source src=\"media/compressed/$(basename "$file")\" type=\"video/webm\" ></video></div>" >> content.html
-
+  if true; then
+    if [[ "$file" == *"xxx"* ]]; then
+      echo "      <div class=\"gif\" rel=\"xxx\"><video autoplay loop muted playsinline ><source src=\"media/compressed/$(basename  "${file%.*}").mp4\" type=\"video/mp4\" ><source src=\"media/compressed/$(basename "$file")\" type=\"video/webm\" ></video></div>" >> content.html
+    else
+      echo "      <div class=\"gif\"><video autoplay loop muted playsinline ><source src=\"media/compressed/$(basename  "${file%.*}").mp4\" type=\"video/mp4\" ><source src=\"media/compressed/$(basename "$file")\" type=\"video/webm\" ></video></div>" >> content.html
+    fi
+  fi
 done
 
 
@@ -38,6 +50,6 @@ done
 echo "<!--content-end-->">> content.html
 
 
-cp index.html backup.html
+cp index.html index.backup
 
 sed -i -e '/<!--content-start-->/,/<!--content-end-->/!b' -e '/<!--content-end-->/!d;r content.html' -e 'd' index.html
