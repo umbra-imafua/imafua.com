@@ -55,6 +55,7 @@ input{
 #giftoggle{top: 4vh; right: 1vh;}
 #texttoggle{top: 8vh; right: 1vh;}
 #techtoggle{top: 12vh; right: 1vh;}
+#videotoggle{top: 16vh; right: 1vh;}
 label {
     color: #09c;
     cursor: pointer;
@@ -68,7 +69,8 @@ label {
 #texttoggle:checked ~ .text {display: none;}
 .tech {display:inherit;}
 #techtoggle:checked ~ .tech {display: none;}
-
+.video {display:inherit;}
+#videotoggle:checked ~ .video {display: none;}
 
 
 section {
