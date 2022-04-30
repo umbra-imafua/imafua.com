@@ -1,6 +1,8 @@
 html {
   color: white;
   background-color: black;
+  background: url(/assets/textures/rave.gif) no-repeat center center fixed;
+  background-size: cover;
 }
 
 nav {
@@ -129,12 +131,13 @@ section {
 section div {
   grid-area: span 1/span 1;
   aspect-ratio: 1/1;
-  margin: 2%;
+  margin: 1vh;
   background-color: black;
-  border-radius: 2%;
+  border-radius: 2vh;
   overflow: hidden;
   border-style: solid;
   border-width: 2%;
+  border-color: black;
   display: -ms-grid;
   display: grid;
   grid-gap: 0;
@@ -144,7 +147,7 @@ section div {
 }
 
 section div article {
-  margin: 5%;
+  margin: 3vh;
 }
 
 section div img {
@@ -182,7 +185,7 @@ div[rel="xxx"] * {
 }
 
 #twoone {
-  margin: 0.1vh;
+  margin: 1vh;
   grid-area: span 1/span 2;
   aspect-ratio: 2/1;
 }
@@ -194,7 +197,7 @@ div[rel="xxx"] * {
 }
 
 #twotwo {
-  margin: 1%;
+  margin: 1vh;
   grid-area: span 2/span 2;
 }
 
@@ -205,7 +208,7 @@ div[rel="xxx"] * {
 }
 
 #threetwo {
-  margin: 1%;
+  margin: 1vh;
   grid-area: span 2/span 3;
   aspect-ratio: 3/2;
   -ms-grid-columns: (minmax(33.33%, 1fr))[auto-fit];
