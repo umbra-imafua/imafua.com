@@ -15,19 +15,35 @@ for i in media/art/*.gif;
 
 done
 
+
+
+
+for i in media/art/*.png media/art/*.PNG media/art/*.jpg media/art/*.svg media/art/*.JPG media/art/*.jpeg media/art/*.JPEG; do
+  name=`echo "$i" | cut -d'.' -f1`
+  echo "$name"
+  if test -f "media/compressed/$(basename -- $name).jpg"; then
+    echo "${name}.jpg exists skipping"
+  else
+    convert -strip -interlace Plane -gaussian-blur 0.05 -resize 512x512> -quality 85% "$i" "media/compressed/$(basename -- $name).jpg"
+  fi
+done
+
+
+
 > content.html
+
 
 echo "<!--content-start-->">> content.html
 echo "  " >> content.html
 
 echo "<!--images-->" >> content.html
 
-for file in media/art/*.png media/art/*.jpg media/art/*.svg media/art/*.PNG media/art/*.JPG media/art/*.SVG; do
+for file in media/compressed/*.jpg; do
   if true; then
     if [[ "$file" == *"xxx"* ]]; then
-      echo "      <div class=\"image\" rel=\"xxx\"><img src=\"media/art/$(basename "$file")\"></div>" >> content.html
+      echo "      <div class=\"image\" rel=\"xxx\"><img src=\"media/compressed/$(basename "$file")\"></div>" >> content.html
     else
-      echo "      <div class=\"image\"><img src=\"media/art/$(basename "$file")\"></div>" >> content.html
+      echo "      <div class=\"image\"><img src=\"media/compressed/$(basename "$file")\"></div>" >> content.html
     fi
   fi
 

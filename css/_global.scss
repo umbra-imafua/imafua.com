@@ -124,19 +124,6 @@ section {
 div[rel="xxx"] *{
     filter: blur(1.5rem);
 }
-div:after{
-    content: "22";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    padding: 0.5em 20px;
-    width: 460px;
-    height: 200px;
-    background: rgba(0,0,0,0.8);
-    text-decoration: none !important;
-    color: #fff;
-    opacity: 1.0;
-}
 
 #twotwo{
 margin: 1%;
