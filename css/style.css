@@ -49,7 +49,7 @@ footer {
 }
 
 .image {
-  display: block;
+  display: none;
 }
 
 #imagetoggle:checked ~ .image {

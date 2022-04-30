@@ -48,7 +48,7 @@ footer{
 
 
 .visually-hidden {position: absolute;/* Note, you may want to position the checkbox over top the label and set the opacity to zero instead. It can be better for accessibilty on some touch devices for discoverability. */}
-.image {display:block;}
+.image {display:none;}
 #imagetoggle:checked ~ .image {display: none;}
 .gif {display:block;}
 #giftoggle:checked ~ .gif {display: none;}

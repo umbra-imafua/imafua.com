@@ -38,7 +38,7 @@ echo "  " >> content.html
 
 echo "<!--images-->" >> content.html
 
-for file in media/compressed/*.jpg; do
+for file in media/compressed/*.jpg media/compressed/*.svg media/compressed/*.SVG; do
   if true; then
     if [[ "$file" == *"xxx"* ]]; then
       echo "      <div class=\"image\" rel=\"xxx\"><img src=\"media/compressed/$(basename "$file")\"></div>" >> content.html
