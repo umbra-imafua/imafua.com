@@ -1,7 +1,7 @@
 html {
   color: white;
   background-color: black;
-  background: url(/assets/textures/rave.gif) no-repeat center center fixed;
+  background: url(/assets/backgrounds/funnyoldroom.jpg) no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -25,7 +25,7 @@ nav label {
   border-style: none;
   cursor: -webkit-grabbing;
   cursor: grabbing;
-  background-color: green;
+  background-color: white;
 }
 
 main {
@@ -47,6 +47,7 @@ footer {
 
 input {
   position: fixed;
+  font-size: 10vh;
 }
 
 #imagetoggle {
@@ -75,8 +76,12 @@ input {
 }
 
 label {
-  color: #09c;
+  color: black;
   cursor: pointer;
+}
+
+label link:visited {
+  color: black;
 }
 
 .visually-hidden {
@@ -146,7 +151,7 @@ section div {
   aspect-ratio: 1/1;
   margin: 1vh;
   background-color: black;
-  border-radius: 2vh;
+  border-radius: 0.5vh;
   overflow: hidden;
   border-style: solid;
   border-width: 2%;

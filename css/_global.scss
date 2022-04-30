@@ -2,7 +2,7 @@ html{
     color: white;   
     background-color: black;
 
-    background: url(/assets/textures/rave.gif) no-repeat center center fixed; 
+    background: url(/assets/backgrounds/funnyoldroom.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -29,7 +29,7 @@ nav{
         border-radius: 7%;
         border-style: none;
         cursor:grabbing;
-        background-color: green;
+        background-color: white;
     }
 }
 main{
@@ -50,6 +50,7 @@ footer{
 
 input{
     position: fixed;
+    font-size: 10vh;
 }
 #imagetoggle{top: 0vh; right: 1vh;}
 #giftoggle{top: 4vh; right: 1vh;}
@@ -57,7 +58,8 @@ input{
 #techtoggle{top: 12vh; right: 1vh;}
 #videotoggle{top: 16vh; right: 1vh;}
 label {
-    color: #09c;
+    color: black;
+    link:visited{color: black;}
     cursor: pointer;
 }
 .visually-hidden {position: absolute;/* Note, you may want to position the checkbox over top the label and set the opacity to zero instead. It can be better for accessibilty on some touch devices for discoverability. */}
@@ -92,7 +94,7 @@ section {
         aspect-ratio: 1/1;
         margin: 1vh;
         background-color: black; 
-        border-radius: 2vh;
+        border-radius: 0.5vh;
         overflow: hidden;
         
         border-style: solid;
