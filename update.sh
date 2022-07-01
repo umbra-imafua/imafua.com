@@ -30,42 +30,44 @@ done
 
 
 
-> content.html
+> ASSETS/content.html
 
 
-echo "<!--content-start-->">> content.html
-echo "  " >> content.html
+echo "<!--content-start-->">> ASSETS/content.html
+echo "  " >> ASSETS/content.html
 
-echo "<!--images-->" >> content.html
+echo "<!--images-->" >> ASSETS/content.html
 
 for file in media/compressed/*.jpg media/compressed/*.svg media/compressed/*.SVG; do
   if true; then
     if [[ "$file" == *"xxx"* ]]; then
-      echo "      <div class=\"image\" rel=\"xxx\"><img src=\"media/compressed/$(basename "$file")\"></div>" >> content.html
+      echo "      <div class=\"image\" rel=\"xxx\"><img src=\"media/compressed/$(basename "$file")\"></div>" >> ASSETS/content.html
     else
-      echo "      <div class=\"image\"><img src=\"media/compressed/$(basename "$file")\"></div>" >> content.html
+      echo "      <div class=\"image\"><img src=\"media/compressed/$(basename "$file")\"></div>" >> ASSETS/content.html
     fi
   fi
 
 done
 
-echo "<!--videos-->" >> content.html
+echo "<!--videos-->" >> ASSETS/content.html
 
 for file in media/compressed/*.webm; do
   if true; then
     if [[ "$file" == *"xxx"* ]]; then
-      echo "      <div class=\"gif\" rel=\"xxx\"><video autoplay loop muted playsinline ><source src=\"media/compressed/$(basename  "${file%.*}").mp4\" type=\"video/mp4\" ><source src=\"media/compressed/$(basename "$file")\" type=\"video/webm\" ></video></div>" >> content.html
+      echo "      <div class=\"gif\" rel=\"xxx\"><video autoplay loop muted playsinline ><source src=\"media/compressed/$(basename  "${file%.*}").mp4\" type=\"video/mp4\" ><source src=\"media/compressed/$(basename "$file")\" type=\"video/webm\" ></video></div>" >> ASSETS/content.html
     else
-      echo "      <div class=\"gif\"><video autoplay loop muted playsinline ><source src=\"media/compressed/$(basename  "${file%.*}").mp4\" type=\"video/mp4\" ><source src=\"media/compressed/$(basename "$file")\" type=\"video/webm\" ></video></div>" >> content.html
+      echo "      <div class=\"gif\"><video autoplay loop muted playsinline ><source src=\"media/compressed/$(basename  "${file%.*}").mp4\" type=\"video/mp4\" ><source src=\"media/compressed/$(basename "$file")\" type=\"video/webm\" ></video></div>" >> ASSETS/content.html
     fi
   fi
 done
 
 
 
-echo "<!--content-end-->">> content.html
+echo "<!--content-end-->">> ASSETS/content.html
 
 
-cp index.html index.backup
+cp index.html ASSETS/index.backup
 
-sed -i -e '/<!--content-start-->/,/<!--content-end-->/!b' -e '/<!--content-end-->/!d;r content.html' -e 'd' index.html
+sed -i -e '/<!--content-start-->/,/<!--content-end-->/!b' -e '/<!--content-end-->/!d;r ASSETS/content.html' -e 'd' index.html
+
+rm ./-quality
