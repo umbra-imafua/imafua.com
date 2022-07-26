@@ -1,16 +1,16 @@
-for i in media/art/*.gif;
+for i in ART/*.gif;
   do name=`echo "$i" | cut -d'.' -f1`
   echo "$name"
-  if test -f "media/compressed/$(basename -- $name).webm"; then
+  if test -f "COMPRESSED/$(basename -- $name).webm"; then
     echo "${name}.webm exists skipping"
   else
-    ffmpeg -i "$i" -c vp9 -b:v 0 -crf 40 -vf "scale=1280:720:force_original_aspect_ratio=1,pad=1280:720:(ow-iw)/2:(oh-ih)/2" "media/compressed/$(basename -- $name).webm"
+    ffmpeg -i "$i" -c vp9 -b:v 0 -crf 40 -vf "scale=1280:720:force_original_aspect_ratio=1,pad=1280:720:(ow-iw)/2:(oh-ih)/2" "COMPRESSED/$(basename -- $name).webm"
   fi
   
-  if test -f "media/compressed/$(basename -- $name).mp4"; then
+  if test -f "COMPRESSED/$(basename -- $name).mp4"; then
     echo "${name}.mp4 exists skipping"
   else
-    ffmpeg -i "$i" -vcodec h264 -acodec aac -crf 23 -strict -2 -vf "scale=1280:720:force_original_aspect_ratio=1,pad=1280:720:(ow-iw)/2:(oh-ih)/2" "media/compressed/$(basename -- $name).mp4"
+    ffmpeg -i "$i" -vcodec h264 -acodec aac -crf 23 -strict -2 -vf "scale=1280:720:force_original_aspect_ratio=1,pad=1280:720:(ow-iw)/2:(oh-ih)/2" "COMPRESSED/$(basename -- $name).mp4"
   fi
 
 done
@@ -18,13 +18,13 @@ done
 
 
 
-for i in media/art/*.png media/art/*.PNG media/art/*.jpg media/art/*.svg media/art/*.JPG media/art/*.jpeg media/art/*.JPEG; do
+for i in ART/*.png ART/*.PNG ART/*.jpg ART/*.svg ART/*.JPG ART/*.jpeg ART/*.JPEG; do
   name=`echo "$i" | cut -d'.' -f1`
   echo "$name"
-  if test -f "media/compressed/$(basename -- $name).jpg"; then
+  if test -f "COMPRESSED/$(basename -- $name).jpg"; then
     echo "${name}.jpg exists skipping"
   else
-    convert -strip -interlace Plane -gaussian-blur 0.05 -resize 512x512> -quality 85% "$i" "media/compressed/$(basename -- $name).jpg"
+    convert -strip -interlace Plane -gaussian-blur 0.05 -resize 512x512> -quality 85% "$i" "COMPRESSED/$(basename -- $name).jpg"
   fi
 done
 
@@ -38,12 +38,12 @@ echo "  " >> ASSETS/content.html
 
 echo "<!--images-->" >> ASSETS/content.html
 
-for file in media/compressed/*.jpg media/compressed/*.svg media/compressed/*.SVG; do
+for file in COMPRESSED/*.jpg COMPRESSED/*.svg COMPRESSED/*.SVG; do
   if true; then
     if [[ "$file" == *"xxx"* ]]; then
-      echo "      <div class=\"image\" rel=\"xxx\"><img src=\"media/compressed/$(basename "$file")\"></div>" >> ASSETS/content.html
+      echo "      <div class=\"image\" rel=\"xxx\"><img src=\"COMPRESSED/$(basename "$file")\"></div>" >> ASSETS/content.html
     else
-      echo "      <div class=\"image\"><img src=\"media/compressed/$(basename "$file")\"></div>" >> ASSETS/content.html
+      echo "      <div class=\"image\"><img src=\"COMPRESSED/$(basename "$file")\"></div>" >> ASSETS/content.html
     fi
   fi
 
@@ -51,12 +51,12 @@ done
 
 echo "<!--videos-->" >> ASSETS/content.html
 
-for file in media/compressed/*.webm; do
+for file in COMPRESSED/*.webm; do
   if true; then
     if [[ "$file" == *"xxx"* ]]; then
-      echo "      <div class=\"gif\" rel=\"xxx\"><video autoplay loop muted playsinline ><source src=\"media/compressed/$(basename  "${file%.*}").mp4\" type=\"video/mp4\" ><source src=\"media/compressed/$(basename "$file")\" type=\"video/webm\" ></video></div>" >> ASSETS/content.html
+      echo "      <div class=\"gif\" rel=\"xxx\"><video autoplay loop muted playsinline ><source src=\"COMPRESSED/$(basename  "${file%.*}").mp4\" type=\"video/mp4\" ><source src=\"COMPRESSED/$(basename "$file")\" type=\"video/webm\" ></video></div>" >> ASSETS/content.html
     else
-      echo "      <div class=\"gif\"><video autoplay loop muted playsinline ><source src=\"media/compressed/$(basename  "${file%.*}").mp4\" type=\"video/mp4\" ><source src=\"media/compressed/$(basename "$file")\" type=\"video/webm\" ></video></div>" >> ASSETS/content.html
+      echo "      <div class=\"gif\"><video autoplay loop muted playsinline ><source src=\"COMPRESSED/$(basename  "${file%.*}").mp4\" type=\"video/mp4\" ><source src=\"COMPRESSED/$(basename "$file")\" type=\"video/webm\" ></video></div>" >> ASSETS/content.html
     fi
   fi
 done
