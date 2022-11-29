@@ -2,41 +2,7 @@
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 cd "$parent_path"
 
-for i in ../ART/*.gif; do
-  printf "$i"
-  name=`echo "$i" | cut -c3- | cut -d'.' -f1`
-  echo "$name"
-  if test -f "COMPRESSED/$(basename -- $name).webm"; then
-    echo "${name}.webm exists skipping"
-  else
-    ffmpeg -i "$i" -c vp9 -b:v 0 -crf 40 -vf "scale=1280:720:force_original_aspect_ratio=1,pad=1280:720:(ow-iw)/2:(oh-ih)/2" "COMPRESSED/$(basename -- $name).webm"
-  fi
-  
-  if test -f "COMPRESSED/$(basename -- $name).mp4"; then
-    echo "${name}.mp4 exists skipping"
-  else
-    ffmpeg -i "$i" -vcodec h264 -acodec aac -crf 23 -strict -2 -vf "scale=1280:720:force_original_aspect_ratio=1,pad=1280:720:(ow-iw)/2:(oh-ih)/2" "COMPRESSED/$(basename -- $name).mp4"
-  fi
-
-done
-
-
-
-
-for i in ../ART/*.png ../ART/*.PNG ../ART/*.jpg ../ART/*.JPG ../ART/*.jpeg ../ART/*.JPEG; do
-  name=`echo "$i" | cut -c3- | cut -d'.' -f1`
-  echo "$name"
-  if test -f "COMPRESSED/$(basename -- $name).jpg"; then
-    echo "${name}.jpg exists skipping"
-  else
-    convert -strip -interlace Plane -gaussian-blur 0.05 -resize 512x512> -quality 85% "$i" "COMPRESSED/$(basename -- $name).jpg"
-  fi
-done
-
-
-
 > ASSETS/content.html
-
 
 echo "<!--content-start-->">> ASSETS/content.html
 echo "  " >> ASSETS/content.html
