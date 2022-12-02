@@ -41,4 +41,4 @@ cp oldsiteindex.html ASSETS/oldsiteindex.backup
 
 sed -i -e '/<!--content-start-->/,/<!--content-end-->/!b' -e '/<!--content-end-->/!d;r ASSETS/content.html' -e 'd' oldsiteindex.html
 
-rm ./-quality
+

@@ -9,8 +9,8 @@ var player = document.querySelector(".player");
 var map = document.querySelector("main");
 var foremap = document.querySelector("section");
 
-var x = 400;
-var y = 200;
+var x = 1024;
+var y = 2000;
 var xspeed = 8;
 var yspeed = 8;
 var maxspeed = 8;
@@ -24,6 +24,9 @@ function clamp(num, min, max) {
 if (window.location.hash) {
    console.log("hash found: " + document.location.hash);
    loadmap(document.location.hash.toUpperCase().slice(1), -1);
+}else{
+   console.log("no hash: " + document.location.hash);
+   loadmap("STARTER", -2);
 }
 
 function loadmap(name, exit) {
@@ -47,11 +50,14 @@ function loadmap(name, exit) {
 
          var initentrychecker = null;
 
-         if (exit == -1) {
+         if (exit == -10) {
+            y = 2000;
+            x = 1024;
+         } else if (exit == -1) {
             y = mapheight / 2;
             x = mapwidth / 2;
          } else if (exit == 0) {
-            y = mapheight - 64;
+            y = mapheight - 32;
             for (let entrychecker in maptiles[maptiles.length - 1]) {
                if (maptiles[maptiles.length - 1][entrychecker] == ".") {
                   if (initentrychecker == null) {
@@ -62,7 +68,7 @@ function loadmap(name, exit) {
                }
             }
          } else if (exit == 1) {
-            x = 64;
+            x = 32;
             for (let entrychecker in maptiles[maptiles.length - 1]) {
                if (maptiles[entrychecker][0] == ".") {
                   if (initentrychecker == null) {
@@ -73,7 +79,7 @@ function loadmap(name, exit) {
                }
             }
          } else if (exit == 2) {
-            y = 64;
+            y = 32;
             for (let entrychecker in maptiles[0]) {
                if (maptiles[0][entrychecker] == ".") {
                   if (initentrychecker == null) {
@@ -84,7 +90,7 @@ function loadmap(name, exit) {
                }
             }
          } else if (exit == 3) {
-            x = mapwidth - 64;
+            x = mapwidth - 32;
             for (let entrychecker in maptiles[maptiles.length - 1]) {
                if (maptiles[entrychecker][maptiles[entrychecker].length] == ".") {
                   if (initentrychecker == null) {
@@ -198,13 +204,6 @@ const locationstep = () => {
    }
    player.setAttribute("walking", input ? "true" : "false");
 
-   debug.innerHTML =
-      "x=" + x +
-      "<br>xt" + y +
-      "<br>y=" + mapwidth +
-      "<br>yt=" + mapheight +
-      "<br>tilerow=" + tilerow;
-
    var mapx = clamp((-x / 10.24) + 50, -(mapwidth - 1024) / 10.24, 0);
    var mapy = clamp((-y / 10.24) + 50, -(mapheight - 1024) / 10.24, 0);
 
@@ -214,6 +213,8 @@ const locationstep = () => {
 }
 
 const step = () => {
+
+   debug.innerHTML = "";
 
    locationstep();
 

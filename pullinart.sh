@@ -36,12 +36,12 @@ for i in /media/ubuntu-studio/RAMDISK/TEMPCOPY/*.*; do
         else
             if test -f "COMPRESSED/$title.webm"; then echo "${title}.webm exists skipping"
             else
-                ffmpeg -i "$i" -c vp9 -b:v 0 -crf 40 -vf "scale=1280:720:force_original_aspect_ratio=1,pad=1280:720:(ow-iw)/2:(oh-ih)/2" "COMPRESSED/$title.webm"
+                ffmpeg -i "$i" -c vp9 -b:v 0 -crf 40 -vf 'scale=if(gte(iw\,ih)\,min(1080\,iw)\,-2):if(lt(iw\,ih)\,min(1080\,ih)\,-2)' "COMPRESSED/$title.webm"
             fi
             continue
             if test -f "COMPRESSED/$title.mp4"; then echo "${title}.mp4 exists skipping"
             else
-                ffmpeg -i "$i" -vcodec h264 -acodec aac -crf 23 -strict -2 -vf "scale=1280:720:force_original_aspect_ratio=1,pad=1280:720:(ow-iw)/2:(oh-ih)/2" "COMPRESSED/$title.mp4"
+                ffmpeg -i "$i" -vcodec h264 -acodec aac -crf 23 -strict -2 -vf 'scale=if(gte(iw\,ih)\,min(1080\,iw)\,-2):if(lt(iw\,ih)\,min(1080\,ih)\,-2)' "COMPRESSED/$title.mp4"
             fi
         fi
 
@@ -82,12 +82,14 @@ for i in /media/ubuntu-studio/RAMDISK/TEMPCOPY/*.*; do
         #continue
         if test -f "COMPRESSED/$title.webm"; then echo "${title}.webm exists skipping"
         else
-            ffmpeg -i "$i" -b:v 0 -crf 40 -vf "scale=1280:720:force_original_aspect_ratio=1,pad=1280:720:(ow-iw)/2:(oh-ih)/2" "COMPRESSED/$title.webm"
+            ffmpeg -i "$i" -c vp9 -b:v 0 -crf 40 -vf 'scale=if(gte(iw\,ih)\,min(1080\,iw)\,-2):if(lt(iw\,ih)\,min(1080\,ih)\,-2)' "COMPRESSED/$title.webm"
         fi
         continue
         if test -f "COMPRESSED/$title.mp4"; then echo "${title}.mp4 exists skipping"
         else
-            ffmpeg -i "$i" -vcodec h264 -acodec aac -crf 23 -strict -2 -vf "scale=1280:720:force_original_aspect_ratio=1,pad=1280:720:(ow-iw)/2:(oh-ih)/2" "COMPRESSED/$title.mp4"
+            ffmpeg -i "$i" -vcodec h264 -acodec aac -crf 23 -strict -2 -vf 'scale=if(gte(iw\,ih)\,min(1080\,iw)\,-2):if(lt(iw\,ih)\,min(1080\,ih)\,-2)' "COMPRESSED/$title.mp4"
         fi
     fi
 done
+
+rm ./-quality

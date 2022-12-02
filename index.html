@@ -28,31 +28,29 @@
 </head>
 
 <body>
-
    <div class="debug">DEBUG X= Y= </div>
-
    <main>
-
       <div class="player" facing="v" walking="true">
          <div class="player_spritesheet"></div>
       </div>
-
       <section></section>
+
+      <!--roomin-->
+
+      <video autoplay loop muted playsinline style="top: 20vmin; left: 10vmin; width: 22vmin; z-index: 55;">
+         <source src="COMPRESSED/deadhome.webm" type="video/webm">
+         <img id="imgScale" src="COMPRESSED/deadhome.gif" />
+      </video>
+      <img src="COMPRESSED/alliwannadoisu.jpg" alt="" style="top: 5vmin; left: 17vmin; width: 20vmin; z-index: 25;">
+
+      <!--roomout-->
+      
    </main>
 
-   <div
-      style="background-color: #000; position: absolute; width: calc((100vw - 100vh)/2); height: 100vh; top: 0; left: 0;">
-   </div>
-   <div
-      style="background-color: #000; position: absolute; width: calc((100vw - 100vh)/2); height: 100vh; top: 0; right: 0;">
-   </div>
-
-   <div
-      style="background-color: #000; position: absolute; width: 100vw; height: calc((100vh - 100vw)/2); top: 0; left: 0;">
-   </div>
-   <div
-      style="background-color: #000; position: absolute; width: 100vw; height: calc((100vh - 100vw)/2); bottom: 0; left: 0;">
-   </div>
+   <div style="background-color: #000; position: absolute; width: calc((100vw - 100vh)/2); height: 100vh; top: 0; left: 0;"></div>
+   <div style="background-color: #000; position: absolute; width: calc((100vw - 100vh)/2); height: 100vh; top: 0; right: 0;"></div>
+   <div style="background-color: #000; position: absolute; width: 100vw; height: calc((100vh - 100vw)/2); top: 0; left: 0;"></div>
+   <div style="background-color: #000; position: absolute; width: 100vw; height: calc((100vh - 100vw)/2); bottom: 0; left: 0;"></div>
 
    <script src="MAP/map.js"></script>
    <script src="script.js"></script>
