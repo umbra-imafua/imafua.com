@@ -2,3 +2,5 @@ HILLPATH
 STALAGMITE
 null
 TEMPLE
+
+biter.jpg 20 30 10

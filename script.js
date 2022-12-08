@@ -2,6 +2,7 @@ var mapname = "STARTER"
 var mapwidth = 2048;
 var mapheight = 2048;
 var mapexits = ["TEMPLE", "STARTERCUBBY", null, null];
+var mapart = [["biter.png",22,35,42],["hitcharideandhideinside.jpg",30,55,42]];
 var maptiles = ["000..........000", "00.............0", "00..............", "00.........00...", "00..........0..0", "000.........0000", "0000.........000", "0000..........00", "000...........00", "00............00", "00............00", "00............00", "00............00", "000..........000", "00000......00000", "0000000..0000000"];
 
 var debug = document.querySelector(".debug");
@@ -41,12 +42,21 @@ function loadmap(name, exit) {
          mapwidth = m[1];
          mapheight = m[2];
          mapexits = m[3];
-         maptiles = m[4];
+         mapart = m[4];
+         maptiles = m[5];
 
-         map.style.backgroundImage = 'url("MAP/export/' + mapname + '-B.png")';
-         foremap.style.backgroundImage = 'url("MAP/export/' + mapname + '-F.png")';
          map.style.width = (100 * (mapwidth / 1024)) + 'vmin';
          map.style.height = (100 * (mapheight / 1024)) + 'vmin';
+         map.style.backgroundImage = 'url("MAP/export/' + mapname + '-B.png")';
+         foremap.style.backgroundImage = 'url("MAP/export/' + mapname + '-F.png")';
+
+         
+         for (ma of mapart){
+            
+
+         }
+
+
 
          var initentrychecker = null;
 

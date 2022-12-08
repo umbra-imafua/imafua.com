@@ -8,6 +8,7 @@ echo "var maps = [" >> map.js
 maps=""
 first=true
 for i in ./export/*-B.png; do
+
     name=`echo "$i" | cut -c10- | cut -d'.' -f1 | cut -d'-' -f1`
     echo "$name"
 
@@ -15,36 +16,61 @@ for i in ./export/*-B.png; do
         echo "${name} does not have -B background file"
     else
 
-        read -r width height <<< $( identify -format "%w %h" export/${name}-C.png)
+        read -r width height <<< $( identify -format "%w %h" export/${name}-C.jpg)
 
-        if ($first); then
-            first=false   
+        if ($first); then 
+            first=false
         else
             echo "," >> map.js
         fi
 
-
         exitstring=""
-
+        artliststring=""
         filename="export/${name}.txt"
         n=0
         while read line; do
-            if [[ "${line}" == "null"  ]]; then
-                exitstring="${exitstring}null"
-            else
-                exitstring="${exitstring}\"${line}\""
-            fi
+            if [[ n -lt 4  ]]; then
+                if [[ "${line}" == "null"  ]]; then
+                    exitstring="${exitstring}null"
+                else
+                    exitstring="${exitstring}\"${line}\""
+                fi
 
-            if [[ n -lt 3  ]]; then
-                exitstring="${exitstring},"
+                if [[ n -lt 3  ]]; then 
+                    exitstring="${exitstring},"
+                else 
+                    echo "[\"$name\",$width,$height,[${exitstring}],[" >> map.js
+                fi
+            else
+                artlistarray=(${line})
+                if [ "$artlistarray[0]" == "" ]; then echo "blank line"
+                elif [ "$artlistarray[1]" == "" ] || [ "${artlistarray[2]}" == "" ]; then echo "$artlistarray[0] has no location set"
+                else
+                    if ! [ "$artliststring" == "" ]; then
+                        echo "," >> map.js
+                    fi
+                    artliststring="["
+                    for i in "${!artlistarray[@]}"; do
+                        if ! [[ "$i" = "0" ]]; then
+                            artliststring="${artliststring},"
+                        fi
+
+                        if [[ ${artlistarray[i]} =~ ^[0-9]+$ ]]; then
+                            artliststring="${artliststring}${artlistarray[i]}"
+                        else
+                            artliststring="${artliststring}\"${artlistarray[i]}\""
+                        fi
+                    done
+                    artliststring="${artliststring}]"
+
+                    echo -n "${artliststring}" >> map.js
+                fi
             fi
             echo "Line No. $n : $line"
         n=$((n+1))
         done < $filename
-
-        echo "${exitstring}"
-        echo "[\"$name\",$width,$height,[${exitstring}],[" >> map.js
-        
+        echo "" >> map.js
+        echo "],[" >> map.js
 
         tilemap=""
         for ((y=32; y<=width; y+=64)) do
@@ -52,8 +78,8 @@ for i in ./export/*-B.png; do
             row="\""
             for ((x=32; x<=width; x+=64)) do
 
-                read -r hex <<< $( identify  -format "#%[hex:u.p{${x},${y}]" export/${name}-C.png)
-                if [ "$hex" = "#00000000" ]; then
+                read -r hex <<< $( identify  -format "#%[hex:u.p{${x},${y}]" export/${name}-C.jpg)
+                if [ "$hex" = "#FFFFFF" ]; then
                     row="${row}."
                 else
                     row="${row}0"
