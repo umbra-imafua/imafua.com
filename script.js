@@ -63,7 +63,7 @@ function loadmap(name, exit) {
          map.style.height = (100 * (mapheight / 1024)) + 'vmin';
          map.style.backgroundImage = 'url("MAP/export/' + mapname + '-B.png")';
          foremap.style.backgroundImage = 'url("MAP/export/' + mapname + '-F.png")';
-         
+
          
          canvas.innerHTML = "";
 
@@ -75,11 +75,11 @@ function loadmap(name, exit) {
                case "jpg":
                case "jpeg":
                case "png":
-                  canvas.innerHTML = canvas.innerHTML + '<img src=" COMPRESSED/' +  ma[0] + '" alt="" style="top: 5vmin; left: 17vmin; width: 20vmin; z-index: 25;">';
-                 break;
+                  canvas.innerHTML = canvas.innerHTML + '<img src=" COMPRESSED/' +  ma[0] + '" alt="" style="top: ' + ma[2] + 'vmin; left: ' + ma[1] + 'vmin; width: ' + ma[3] + 'vmin; z-index: 25;">';
+                  break;
                case "webm":
-                  canvas.innerHTML = canvas.innerHTML + '<video autoplay loop muted playsinline style="top: 20vmin; left: 10vmin; width: 22vmin; z-index: 55;"><source src=" COMPRESSED/' + ma[0] + '" type="video/webm"></video>';
-                 break;
+                  canvas.innerHTML = canvas.innerHTML + '<video autoplay loop muted playsinline style="top: ' + ma[2] + 'vmin; left: ' + ma[1] + 'vmin; width: ' + ma[3] + 'vmin; z-index: 55;"><source src=" COMPRESSED/' + ma[0] + '" type="video/webm"></video>';
+                  break;
                default:
                  // code block
              }
