@@ -5,11 +5,6 @@ var mapexits = ["TEMPLE", "STARTERCUBBY", null, null];
 var mapart = [["biter.png",22,35,42],["hitcharideandhideinside.jpg",30,55,42]];
 var maptiles = ["000..........000", "00.............0", "00..............", "00.........00...", "00..........0..0", "000.........0000", "0000.........000", "0000..........00", "000...........00", "00............00", "00............00", "00............00", "00............00", "000..........000", "00000......00000", "0000000..0000000"];
 
-var debug = document.querySelector(".debug");
-var player = document.querySelector(".player");
-var map = document.querySelector("main");
-var foremap = document.querySelector("section");
-
 var x = 1024;
 var y = 2000;
 var xspeed = 8;
@@ -22,13 +17,32 @@ function clamp(num, min, max) {
    return num <= min ? min : num >= max ? max : num
 }
 
-if (window.location.hash) {
-   console.log("hash found: " + document.location.hash);
-   loadmap(document.location.hash.toUpperCase().slice(1), -1);
-}else{
-   console.log("no hash: " + document.location.hash);
-   loadmap("STARTER", -2);
-}
+var debug = document.querySelector(".debug");
+var player = document.querySelector(".player");
+var map = document.querySelector("main");
+var foremap = document.querySelector("section");
+var canvas = document.querySelector("article");
+
+window.addEventListener('load', function () {
+
+   debug = document.querySelector(".debug");
+   player = document.querySelector(".player");
+   map = document.querySelector("main");
+   foremap = document.querySelector("section");
+   canvas = document.querySelector("article");
+
+   if (window.location.hash) {
+      console.log("hash found: " + document.location.hash);
+      loadmap(document.location.hash.toUpperCase().slice(1), -1);
+   }else{
+      console.log("no hash: " + document.location.hash);
+      loadmap("STARTER", -2);
+   }
+
+   step();
+
+ })
+
 
 function loadmap(name, exit) {
 
@@ -49,10 +63,26 @@ function loadmap(name, exit) {
          map.style.height = (100 * (mapheight / 1024)) + 'vmin';
          map.style.backgroundImage = 'url("MAP/export/' + mapname + '-B.png")';
          foremap.style.backgroundImage = 'url("MAP/export/' + mapname + '-F.png")';
-
          
+         
+         canvas.innerHTML = "";
+
          for (ma of mapart){
             
+            var extention = ma[0].split('.').pop();
+
+            switch(extention) {
+               case "jpg":
+               case "jpeg":
+               case "png":
+                  canvas.innerHTML = canvas.innerHTML + '<img src=" COMPRESSED/' +  ma[0] + '" alt="" style="top: 5vmin; left: 17vmin; width: 20vmin; z-index: 25;">';
+                 break;
+               case "webm":
+                  canvas.innerHTML = canvas.innerHTML + '<video autoplay loop muted playsinline style="top: 20vmin; left: 10vmin; width: 22vmin; z-index: 55;"><source src=" COMPRESSED/' + ma[0] + '" type="video/webm"></video>';
+                 break;
+               default:
+                 // code block
+             }
 
          }
 
@@ -232,7 +262,6 @@ const step = () => {
       step();
    })
 }
-step();
 
 const directions = { up: "up", down: "down", left: "left", right: "right",}
 const keys = { 38: directions.up, 37: directions.left, 39: directions.right, 40: directions.down,}
