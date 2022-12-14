@@ -109,7 +109,7 @@ function loadmap(name, exit) {
             }
          } else if (exit == 1) {
             x = 32;
-            for (let entrychecker in maptiles[maptiles.length - 1]) {
+            for (let entrychecker in maptiles) {
                if (maptiles[entrychecker][0] == ".") {
                   if (initentrychecker == null) {
                      initentrychecker = (entrychecker * 64) + 32
@@ -131,8 +131,8 @@ function loadmap(name, exit) {
             }
          } else if (exit == 3) {
             x = mapwidth - 32;
-            for (let entrychecker in maptiles[maptiles.length - 1]) {
-               if (maptiles[entrychecker][maptiles[entrychecker].length] == ".") {
+            for (let entrychecker in maptiles) {
+               if (maptiles[entrychecker][maptiles[entrychecker].length-1] == ".") {
                   if (initentrychecker == null) {
                      initentrychecker = (entrychecker * 64) + 32
                   } else {
