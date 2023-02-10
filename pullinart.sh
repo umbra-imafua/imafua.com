@@ -94,3 +94,5 @@ for i in /media/ubuntu-studio/RAMDISK/TEMPCOPY/*.*; do
 done
 
 rm ./-quality
+
+echo pull in art done

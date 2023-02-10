@@ -39,3 +39,5 @@ echo "<!--content-end-->">> content.html
 sed -i -e '/<!--content-start-->/,/<!--content-end-->/!b' -e '/<!--content-end-->/!d;r content.html' -e 'd' gallery.html
 
 rm content.html
+
+echo gallery update done
