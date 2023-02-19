@@ -5,8 +5,4 @@ null
 
 bigdoggo.jpg 40 48 20
 
-
-
-arwftf
-
 mouse.jpg 44 84 39
