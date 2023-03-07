@@ -1,3 +1,7 @@
+function clamp(num, min, max) {
+   return num <= min ? min : num >= max ? max : num
+}
+
 var mapname = "STARTER"
 var mapwidth = 2048;
 var mapheight = 2048;
@@ -13,10 +17,6 @@ var maxspeed = 8;
 var accspeed = 3;
 var inputs = [];
 
-function clamp(num, min, max) {
-   return num <= min ? min : num >= max ? max : num
-}
-
 var debug = document.querySelector(".debug");
 var player = document.querySelector(".player");
 var map = document.querySelector("main");
@@ -24,13 +24,11 @@ var foremap = document.querySelector("section");
 var canvas = document.querySelector("article");
 
 window.addEventListener('load', function () {
-
    debug = document.querySelector(".debug");
    player = document.querySelector(".player");
    map = document.querySelector("main");
    foremap = document.querySelector("section");
    canvas = document.querySelector("article");
-
    if (window.location.hash) {
       console.log("hash found: " + document.location.hash);
       loadmap(document.location.hash.toUpperCase().slice(1), -1);
@@ -38,11 +36,8 @@ window.addEventListener('load', function () {
       console.log("no hash: " + document.location.hash);
       loadmap("STARTER", -2);
    }
-
    step();
-
- })
-
+})
 
 function loadmap(name, exit) {
 
@@ -66,6 +61,8 @@ function loadmap(name, exit) {
 
          
          canvas.innerHTML = "";
+
+
 
          for (ma of mapart){
             
