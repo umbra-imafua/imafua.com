@@ -59,15 +59,35 @@ function loadmap(name, exit) {
          map.style.backgroundImage = 'url("MAP/export/' + mapname + '-B.png")';
          foremap.style.backgroundImage = 'url("MAP/export/' + mapname + '-F.png")';
 
+         var capacity = Math.floor(maptiles.length*maptiles[0].length*0.03);
+         for (let maY = 0; maY < maptiles.length; maY++){
+            for (let maX = 0; maX < maptiles[0].length; maX++){
+               if (maptiles[maY][maX] == "0") {
+                  
+                  if(Math.floor(Math.random() * capacity)==0){
+                     
+                     if (maY > 0) { if (maptiles[maY-1][maX] == "." ) { continue; }}
+                     if (maX > 0) { if (maptiles[maY][maX-1] == "." ) { continue; }}
+                     if (maY < maptiles.length -1 ) { if (maptiles[maY+1][maX] == "." ) { continue; }}
+                     if (maX < maptiles[0].length -1 ) { if (maptiles[maY][maX+1] == "." ) { continue; }}
+                     
+                     if(mapart.length<capacity){
+
+                        var thisart = images[Math.floor(Math.random()*images.length)];
+                        
+                        mapart.push([thisart,maX*6,maY*6,16]);
+                     }
+                  }
+               }
+            }
+         }
+
          
+
+
          canvas.innerHTML = "";
-
-
-
-         for (ma of mapart){
-            
+         for (ma of mapart){   
             var extention = ma[0].split('.').pop();
-
             switch(extention) {
                case "jpg":
                case "jpeg":
@@ -80,13 +100,9 @@ function loadmap(name, exit) {
                default:
                  // code block
              }
-
          }
 
-
-
          var initentrychecker = null;
-
          if (exit == -10) {
             y = 2000;
             x = 1024;
