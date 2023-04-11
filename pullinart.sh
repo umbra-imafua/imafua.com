@@ -1,7 +1,17 @@
- #!/bin/bash
-
+#!/bin/bash
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 cd "$parent_path"
+
+for i in ../ART/BLORBO/*.png; do
+  originname=`echo "$i" | cut -c3-`
+  name="$(basename -- $originname)"
+  if test -f "BLORBO/$name"; then
+    echo "blorbo $name not copied as exists"
+  else
+    convert -strip "$i" -transparent "rgb(255,255,255)" "BLORBO/$name"
+    echo "blorbo $name was copied to blorbo folder"
+  fi
+done
 
 rm -r /media/ubuntu-studio/RAMDISK/TEMPCOPY/
 mkdir /media/ubuntu-studio/RAMDISK/TEMPCOPY/
