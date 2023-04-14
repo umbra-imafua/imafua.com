@@ -2,6 +2,10 @@
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 cd "$parent_path"
 
+
+cp ../MIND/@QUOTES.md quotes.txt
+sed -i '/^$/d' quotes.txt
+
 for i in ../ART/BLORBO/*.png; do
   originname=`echo "$i" | cut -c3-`
   name="$(basename -- $originname)"

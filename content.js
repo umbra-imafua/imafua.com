@@ -7,6 +7,7 @@ var images = [
 "brainpain.jpg",
 "brianneandleslie.jpg",
 "bussneak.jpg",
+"coloring.jpg",
 "dogswhohatethemselves.jpg",
 "drowning.jpg",
 "enbergy.jpg",
@@ -84,4 +85,7 @@ var videos = [
 "raybd.webm",
 "safeandblind.webm",
 "youareinvited.webm"
+]
+var quotes = [
+
 ]
