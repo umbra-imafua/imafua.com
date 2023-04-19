@@ -72,34 +72,38 @@ function loadmap(name, exit) {
                      if (maX < maptiles[0].length -1 ) { if (maptiles[maY][maX+1] == "." ) { continue; }}
                      
                      if(mapart.length<capacity){
+                        var matype = Math.floor(Math.random() * 10)
 
-                        var thisart = images[Math.floor(Math.random()*images.length)];
-                        
-                        mapart.push([thisart,maX*6,maY*6,16]);
+                        if(matype<3){
+                           var thisart = images[Math.floor(Math.random()*images.length)];
+                           mapart.push([thisart,maX*6,maY*6,16]);
+                        }else if(matype==4){
+                           var thisart = videos[Math.floor(Math.random()*videos.length)];
+                           mapart.push([thisart,maX*6,maY*6,16]);
+                        }
                      }
                   }
                }
             }
          }
 
-         
-
-
          canvas.innerHTML = "";
-         for (ma of mapart){   
-            var extention = ma[0].split('.').pop();
-            switch(extention) {
-               case "jpg":
-               case "jpeg":
-               case "png":
-                  canvas.innerHTML = canvas.innerHTML + '<img src=" COMPRESSED/' +  ma[0] + '" alt="" style="top: ' + ma[2] + 'vmin; left: ' + ma[1] + 'vmin; width: ' + ma[3] + 'vmin; z-index: 25;">';
-                  break;
-               case "webm":
-                  canvas.innerHTML = canvas.innerHTML + '<video autoplay loop muted playsinline style="top: ' + ma[2] + 'vmin; left: ' + ma[1] + 'vmin; width: ' + ma[3] + 'vmin; z-index: 55;"><source src=" COMPRESSED/' + ma[0] + '" type="video/webm"></video>';
-                  break;
-               default:
-                 // code block
-             }
+         for (ma of mapart){
+            if(ma[0].includes(".")){
+               var extention = ma[0].split('.').pop();
+               switch(extention) {
+                  case "jpg":
+                  case "jpeg":
+                  case "png":
+                     canvas.innerHTML = canvas.innerHTML + '<img src=" COMPRESSED/' +  ma[0] + '" alt="" style="top: ' + ma[2] + 'vmin; left: ' + ma[1] + 'vmin; width: ' + ma[3] + 'vmin; z-index: 25;">';
+                     break;
+                  case "webm":
+                     canvas.innerHTML = canvas.innerHTML + '<video autoplay loop muted playsinline style="top: ' + ma[2] + 'vmin; left: ' + ma[1] + 'vmin; width: ' + ma[3] + 'vmin; z-index: 55;"><source src=" COMPRESSED/' + ma[0] + '" type="video/webm"></video>';
+                     break;
+                  default:
+                  // code block
+               }
+            }
          }
 
          var initentrychecker = null;

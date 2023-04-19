@@ -86,6 +86,3 @@ var videos = [
 "safeandblind.webm",
 "youareinvited.webm"
 ]
-var quotes = [
-
-]
