@@ -33,7 +33,7 @@ echo "" >> content.js
 echo "]" >> content.js
 
 echo "<!--quotes-->" >> content.html
-echo "var quotes = [\"">> content.js
+echo -n "var quotes = [\"">> content.js
 
 quotesraw=`cat quotes.txt`
 
@@ -42,15 +42,15 @@ echo "$quotesraw" | while IFS= read -r line ; do
   if [[ "$line" == *"---"* ]]; then
     echo "</p></div>" >> content.html
     echo "<div class=\"quote\"><p>" >> content.html
-    echo "\",\"" >> content.js
+    echo -n "\",\"" >> content.js
   else
     echo "$line" >> content.html
-    echo "$line" >> content.js
+    echo -n "${line//\"/\'}" >> content.js
   fi
 done
 echo "</p></div>" >> content.html
 
-echo "" >> content.js
+echo -n "" >> content.js
 echo "\"]" >> content.js
 
 

@@ -59,7 +59,7 @@ function loadmap(name, exit) {
          map.style.backgroundImage = 'url("MAP/export/' + mapname + '-B.png")';
          foremap.style.backgroundImage = 'url("MAP/export/' + mapname + '-F.png")';
 
-         var capacity = Math.floor(maptiles.length*maptiles[0].length*0.03);
+         var capacity = clamp(Math.floor(maptiles.length*maptiles[0].length*0.03),0,10);
          for (let maY = 0; maY < maptiles.length; maY++){
             for (let maX = 0; maX < maptiles[0].length; maX++){
                if (maptiles[maY][maX] == "0") {
@@ -76,11 +76,15 @@ function loadmap(name, exit) {
 
                         if(matype<3){
                            var thisart = images[Math.floor(Math.random()*images.length)];
-                           mapart.push([thisart,maX*6,maY*6,16]);
-                        }else if(matype==4){
+                           mapart.push([thisart,"image",maX*6,maY*6,16]);
+                        }else if(matype<4){
                            var thisart = videos[Math.floor(Math.random()*videos.length)];
-                           mapart.push([thisart,maX*6,maY*6,16]);
+                           mapart.push([thisart,"video",maX*6,maY*6,16]);
+                        }else if(matype<7){
+                           var thisart = quotes[Math.floor(Math.random()*quotes.length)];
+                           mapart.push([thisart,"quote",maX*6,maY*6,16]);
                         }
+
                      }
                   }
                }
@@ -89,20 +93,24 @@ function loadmap(name, exit) {
 
          canvas.innerHTML = "";
          for (ma of mapart){
-            if(ma[0].includes(".")){
-               var extention = ma[0].split('.').pop();
-               switch(extention) {
-                  case "jpg":
-                  case "jpeg":
-                  case "png":
-                     canvas.innerHTML = canvas.innerHTML + '<img src=" COMPRESSED/' +  ma[0] + '" alt="" style="top: ' + ma[2] + 'vmin; left: ' + ma[1] + 'vmin; width: ' + ma[3] + 'vmin; z-index: 25;">';
-                     break;
-                  case "webm":
-                     canvas.innerHTML = canvas.innerHTML + '<video autoplay loop muted playsinline style="top: ' + ma[2] + 'vmin; left: ' + ma[1] + 'vmin; width: ' + ma[3] + 'vmin; z-index: 55;"><source src=" COMPRESSED/' + ma[0] + '" type="video/webm"></video>';
-                     break;
-                  default:
-                  // code block
+            if(ma[1] == "image" || ma[1] == "video"){
+               if(ma[0].includes(".")){
+                  var extention = ma[0].split('.').pop();
+                  switch(extention) {
+                     case "jpg":
+                     case "jpeg":
+                     case "png":
+                        canvas.innerHTML = canvas.innerHTML + '<img src=" COMPRESSED/' +  ma[0] + '" alt="" style="top: ' + ma[3] + 'vmin; left: ' + ma[2] + 'vmin; width: ' + ma[4] + 'vmin; z-index: 25;">';
+                        break;
+                     case "webm":
+                        canvas.innerHTML = canvas.innerHTML + '<video autoplay loop muted playsinline style="top: ' + ma[3] + 'vmin; left: ' + ma[2] + 'vmin; width: ' + ma[4] + 'vmin; z-index: 55;"><source src=" COMPRESSED/' + ma[0] + '" type="video/webm"></video>';
+                        break;
+                     default:
+                     // code block
+                  }
                }
+            }if(ma[1] == "quote"){
+               canvas.innerHTML = canvas.innerHTML + '<p style="z-index: 9999; top: ' + ma[3] + 'vmin; left: ' + ma[2] + 'vmin; width: ' + ma[4] + 'vmin; z-index: 25;">'+  ma[0] +'</p>';
             }
          }
 
