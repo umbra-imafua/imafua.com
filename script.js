@@ -289,7 +289,7 @@ const step = () => {
 }
 
 const directions = { up: "up", down: "down", left: "left", right: "right",}
-const keys = { 38: directions.up, 37: directions.left, 39: directions.right, 40: directions.down,}
+const keys = { 38: directions.up, 37: directions.left, 39: directions.right, 40: directions.down, 87: directions.up, 65: directions.left, 68: directions.right, 83: directions.down, 70: directions.up, 82: directions.left, 84: directions.right }
 document.addEventListener("keydown", (e) => {
    var dir = keys[e.which];
    if (dir && inputs.indexOf(dir) === -1) {

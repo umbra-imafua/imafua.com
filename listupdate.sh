@@ -45,6 +45,7 @@ echo "$quotesraw" | while IFS= read -r line ; do
     echo -n "\",\"" >> content.js
   else
     echo "$line" >> content.html
+    echo -n "\n" >> content.js
     echo -n "${line//\"/\'}" >> content.js
   fi
 done
@@ -52,7 +53,6 @@ echo "</p></div>" >> content.html
 
 echo -n "" >> content.js
 echo "\"]" >> content.js
-
 
 #end content and sed into gallery
 echo "<!--content-end-->">> content.html
