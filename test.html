@@ -1,0 +1,203 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>test</title>
+</head>
+<body>
+
+
+
+    <main>
+        <nav>
+            <a href="/html/">HTML</a>
+            <a href="/css/">CSS</a>
+            <a href="/js/">JavaScript</a>
+            <a href="/python/">Python</a>
+        </nav>
+        <section>
+            section text
+            section text
+            section text
+        </section>
+        <section>
+            section text
+            section text
+            section text
+        </section>
+        <section style="grid-area: span 10  /span 5;">
+            section text
+            section text
+            section text
+        </section>
+        <section style="grid-area: span 10  /span 5;">
+            section text
+            section text
+            section text
+        </section>
+    </main>
+
+</body>
+
+
+<style>
+
+/* ==== ==== ==== ==== VARIABLES ==== ==== ==== ==== */
+:root{
+    --background: #000;
+
+    --borderwidth: 5px;
+
+    --primary: #d12651;
+    --primaryborder: #d12651;
+    --primarytext: #f4cfa4;
+    --primaryheading: #f4cfa4;
+
+    --secondary: #1e0b11;
+    --secondaryborder: #1e0b11;
+    --secondarytext: #dbb4a9;
+    --secondaryheading: #dbb4a9;
+
+    --inverted: #917f76ff;
+    --invertedtext: #090304;
+    --invertedheading: #090304;
+
+    --link: #6f8b9b;
+    --hover: #96a4eb;
+    --visited: #83af93;
+
+    --success: #83af93;
+    --info: #d13063;
+    --warning: #eeb26d;
+    --danger: #c81f36;
+}
+/* ==== ==== ==== ==== TWEAKS ==== ==== ==== ==== */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    box-sizing:border-box;
+    display: inline-block;
+    box-shadow: none;
+    font-size: 1.5rem;
+}
+script,script::before,script::after,
+style,style::before,style::after,
+title,title::before,title::after{
+    display: none;
+}
+html,body{
+    -webkit-text-size-adjust: 100%;
+    -webkit-appearance: none; -moz-appearance: none; appearance: none;
+    margin: 0; padding: 0; border: 0;
+}
+hr{box-sizing: content-box; overflow: visible}
+b,strong{font-weight: bolder;}
+sub,sup{  font-size: 75%; line-height: 0; position: relative; vertical-align: baseline;}
+sub{bottom: -0.25em;}sup{top: -0.5em;}
+img{border-style: none;}
+button,[type="button"],[type="reset"],[type="submit"]{-webkit-appearance: button;}
+textarea{overflow: auto;}
+[type="search"]{-webkit-appearance: textfield;outline-offset: -2px;}
+[hidden]{display: none;}
+/* ==== ==== ==== ==== HELPER CLASSES ==== ==== ==== ==== */
+.hidden{display: none; visibility: hidden; }
+.invisible{visibility: hidden; }
+@media (prefers-reduced-motion: reduce){a {transition: none}}
+@media print{
+	* { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: sanbeiji.com/archives/953 */ a, a:visited { color: #444 !important; text-decoration: underline; } a[href]:after { content: " (" attr(href) ")"; } abbr[title]:after { content: " (" attr(title) ")"; } .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */ pre, blockquote { border: 1px solid #999; page-break-inside: avoid; } thead { display: table-header-group; } /* css-discuss.incutio.com/wiki/Printing_Tables */ tr, img { page-break-inside: avoid; } img { max-width: 100% !important; } @page { margin: 0.5cm; } p, h2, h3 { orphans: 3; widows: 3; } h2, h3{ page-break-after: avoid; }
+}
+
+
+/* ==== ==== ==== ==== MAIN ==== ==== ==== ==== */
+
+
+html, body{
+    background-color: var(--background);
+    color: var(--primarytext);
+}
+
+body{
+    display: block;
+
+    background-image: url('COMPRESSED/bigdoggo.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+
+}
+
+main{
+    padding-top: 10vh;
+    display: block;
+    
+    margin: auto;
+
+    max-width: 1080px;
+    min-width: 60%;
+
+    background-color: #02ffab;
+
+}
+
+nav{
+    display: block;
+
+    background-color: var(--secondary);
+}
+
+section{
+    display: block;
+    margin-top: 50px;
+    
+    background-color: var(--primary);
+}
+
+p,a,button,input,textarea,select,input,blockquote{font-size: 1.5rem; line-height: 1.5;  letter-spacing: -.08rem;}
+
+h1,h2,h3,h4,h5,h6 { color: var(--primaryheading); font-weight: bold; margin-bottom: 2rem; }
+
+h1{font-size: 4.0rem; line-height: 1.2;  letter-spacing: -.1rem; }
+h2{font-size: 3.6rem; line-height: 1.25; letter-spacing: -.1rem; }
+h3{font-size: 3.0rem; line-height: 1.3;  letter-spacing: -.1rem; }
+h4{font-size: 2.4rem; line-height: 1.35; letter-spacing: -.08rem; }
+h5{font-size: 1.8rem; line-height: 1.5;  letter-spacing: -.05rem; }
+h6{font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
+
+a{color: var(--link);}
+a:hover, a:focus{color: var(--hover);}
+a:visited{color: var(--visited);}
+
+button,input[type="submit"],input[type="reset"],input[type="button"] {
+    background-color: var(--secondary);
+    color: var(--secondarytext);
+    text-align: center;
+    white-space: nowrap;
+    margin-bottom: 2rem;
+}
+textarea,select,input[type="email"],input[type="number"],input[type="search"],input[type="text"],input[type="tel"],input[type="url"],input[type="password"]{
+    background-color: var(--secondary);
+    color: var(--secondarytext);
+    margin-bottom: 2rem;
+}
+label, legend{
+    display: block;
+    margin-bottom: rem;
+    font-weight: 600;
+}
+hr{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    border-width: 0;
+    border-top: 1px solid --primarytext;
+}
+
+@media only screen and (max-width: 700px)
+{
+
+}
+
+</style>
+</html>
