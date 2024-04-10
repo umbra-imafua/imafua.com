@@ -1,0 +1,42 @@
+/* ==== ==== ==== ==== INIT TWEAKS ==== ==== ==== ==== */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    box-sizing:border-box;
+    display: inline-block;
+    box-shadow: none;
+    font-size: 1.5rem;
+}
+script,script::before,script::after,
+style,style::before,style::after,
+title,title::before,title::after{
+    display: none;
+}
+html,body{
+    -webkit-text-size-adjust: 100%;
+    -webkit-appearance: none; -moz-appearance: none; appearance: none;
+    margin: 0; padding: 0; border: 0;
+}
+hr{box-sizing: content-box; overflow: visible}
+b,strong{font-weight: bolder;}
+sub,sup{  font-size: 75%; line-height: 0; position: relative; vertical-align: baseline;}
+sub{bottom: -0.25em;}sup{top: -0.5em;}
+img{border-style: none;}
+button,[type="button"],[type="reset"],[type="submit"]{-webkit-appearance: button;}
+textarea{overflow: auto;}
+[type="search"]{-webkit-appearance: textfield;outline-offset: -2px;}
+[hidden]{display: none;}
+
+/* ==== ==== ==== ==== HELPER CLASSES ==== ==== ==== ==== */
+
+.hidden{display: none; visibility: hidden; }
+.invisible{visibility: hidden; }
+@media (prefers-reduced-motion: reduce){a {transition: none}}
+@media print{
+	* { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: sanbeiji.com/archives/953 */ a, a:visited { color: #444 !important; text-decoration: underline; } a[href]:after { content: " (" attr(href) ")"; } abbr[title]:after { content: " (" attr(title) ")"; } .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */ pre, blockquote { border: 1px solid #999; page-break-inside: avoid; } thead { display: table-header-group; } /* css-discuss.incutio.com/wiki/Printing_Tables */ tr, img { page-break-inside: avoid; } img { max-width: 100% !important; } @page { margin: 0.5cm; } p, h2, h3 { orphans: 3; widows: 3; } h2, h3{ page-break-after: avoid; }
+}
+
