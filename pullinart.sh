@@ -47,7 +47,7 @@ for i in /media/ubuntu-studio/RAMDISK/TEMPCOPY/*.*; do
         echo "gif - frames: $framecount"
         #continue
         if [[ $framecount -le 2 ]]; then
-            convert -strip -interlace Plane -gaussian-blur 0.05 -resize 512x512> -quality 85% "$i" "COMPRESSED/$title.jpg"
+            convert -strip -interlace Plane -gaussian-blur 0.05 -resize 1024x1024> -quality 85% "$i" "COMPRESSED/$title.jpg"
         else
             if test -f "COMPRESSED/$title.webm"; then echo "${title}.webm exists skipping"
             else
@@ -67,12 +67,12 @@ for i in /media/ubuntu-studio/RAMDISK/TEMPCOPY/*.*; do
         if [[ $opaque == 'false' ]] ; then
             if test -f "COMPRESSED/$title.png"; then echo "${title}.png exists skipping"
             else
-                convert "$i" -resize 512x512> -quality 95 -depth 8 "COMPRESSED/$title.png"
+                convert "$i" -resize 1024x1024> -quality 95 -depth 8 "COMPRESSED/$title.png"
             fi
         else
             if test -f "COMPRESSED/$title.jpg"; then echo "${title}.jpg exists skipping"
             else
-                convert -strip -interlace Plane -gaussian-blur 0.05 -resize 512x512> -quality 85% "$i" "COMPRESSED/$title.jpg"
+                convert -strip -interlace Plane -gaussian-blur 0.05 -resize 1024x1024> -quality 85% "$i" "COMPRESSED/$title.jpg"
             fi
         fi
 
@@ -81,7 +81,7 @@ for i in /media/ubuntu-studio/RAMDISK/TEMPCOPY/*.*; do
         #continue
         if test -f "COMPRESSED/$title.jpg"; then echo "${title}.jpg exists skipping"
         else
-            convert -strip -interlace Plane -gaussian-blur 0.05 -resize 512x512> -quality 85% "$i" "COMPRESSED/$title.jpg"
+            convert -strip -interlace Plane -gaussian-blur 0.05 -resize 1024x1024> -quality 85% "$i" "COMPRESSED/$title.jpg"
         fi
 
     elif [[ $i == *.svg||$i == *.SVG ]] ; then
