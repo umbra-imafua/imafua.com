@@ -30,6 +30,17 @@ for i in ../ART/*.*; do
     echo "$name was copied to ramdisk"
   fi
 done
+for i in ../DRAWING/*.*; do
+  originname=`echo "$i" | cut -c3-`
+  name="$(basename -- $originname)"
+  if test -f "COMPRESSED/$name"; then
+    echo "$name not copied as exists"
+  else
+    cp "$i" /media/ubuntu-studio/RAMDISK/TEMPCOPY/
+    echo "$name was copied to ramdisk"
+  fi
+done
+
 
 for i in /media/ubuntu-studio/RAMDISK/TEMPCOPY/*.*; do
     ramname=`echo "$i" | cut -c3-`
